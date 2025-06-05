@@ -1,3 +1,5 @@
 model/
 picture/
 video/
+data_train/
+runs/

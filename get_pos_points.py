@@ -2,17 +2,17 @@ import cv2
 import numpy as np
 import sys
 
-img = cv2.imread('cap.jpg')
-# cap = cv2.VideoCapture("my.mp4")
+# img = cv2.imread('cap.jpg')
+cap = cv2.VideoCapture("video/my.mp4")
 
-# # Lấy frame tại giây thứ t.
-# t = 3  # Giây thứ t để lấy frame
-# fps = cap.get(cv2.CAP_PROP_FPS)  # Lấy số frame trên giây
-# cap.set(cv2.CAP_PROP_POS_FRAMES, int(fps * t))  # Đặt vị trí frame tại giây thứ t.
-# ret, img = cap.read()  # Đọc frame
-# if not ret:
-#     print("Không thể lấy frame từ video.")
-#     sys.exit(0)
+# Lấy frame tại giây thứ t.
+t = 5  # Giây thứ t để lấy frame
+fps = cap.get(cv2.CAP_PROP_FPS)  # Lấy số frame trên giây
+cap.set(cv2.CAP_PROP_POS_FRAMES, int(fps * t))  # Đặt vị trí frame tại giây thứ t.
+ret, img = cap.read()  # Đọc frame
+if not ret:
+    print("Không thể lấy frame từ video.")
+    sys.exit(0)
 
 points = []
 

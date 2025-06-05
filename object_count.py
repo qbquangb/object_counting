@@ -7,7 +7,7 @@ assert cap.isOpened(), "Error reading video file"
 
 # region_points = [(219, 585), (508, 586)]                                    # line counting (use by thuong)
 # region_points = [(20, 400), (1080, 400), (1080, 360), (20, 360)]  # rectangle region
-region_points = [(222, 588), (497, 588), (521, 783), (198, 759)]   # polygon region (use by thuong)
+region_points = [(92, 401), (341, 406), (343, 991), (54, 986), (92, 401)]   # polygon region (use by thuong)
 
 # Remove existing output file if it exists
 output_path = "video/object_counting_output.avi"
@@ -23,8 +23,8 @@ counter = solutions.ObjectCounter(
     show=True,  # display the output
     region=region_points,  # pass region points
     model="model/yolo11n.pt",  # model="yolo11n-obb.pt" for object counting with OBB model.
-    # classes=[0, 2],  # count specific classes i.e. person and car with COCO pretrained model.
-    # tracker="botsort.yaml",  # choose trackers i.e "bytetrack.yaml"
+    classes=[3],  # count specific classes i.e. person and car with COCO pretrained model.
+    tracker="botsort.yaml",  # choose trackers i.e "bytetrack.yaml"
     conf=0.60
 )
 
@@ -58,3 +58,9 @@ cv2.destroyAllWindows()  # destroy all opened windows
 # # Pass region coordinates
 # yolo solutions count region="[(222, 588), (497, 588), (521, 783), (198, 759)]"
 # yolo solutions count source="car_0_6.mp4" show=True region="[(219, 585), (508, 586)]"
+# yolo task=detect mode=predict model=yolov8n.pt source="https://nld.mediacdn.vn/291774122806476800/2025/2/3/img17385495066481738549519497-1738549566769692420503.jpg" show=True
+# Train với CLI.
+# !yolo task=detect mode=train model=yolov8n.pt data=data_train/mydataset.yaml epochs=50 imgsz=640
+
+# Train with python script.
+# results = model.train(data="D:/Duan/19object-counting/data_train/mydataset.yaml", epochs=5, imgsz=640)
